@@ -1222,3 +1222,16 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
   .btn-lg{padding:14px 20px;font-size:14px}
   .hero-ctas .btn-lg{width:100%}
 }
+
+/* Version badge in hero section (auto-updated by GitHub API) */
+.hero-version {
+    text-align: center;
+    color: #00C2FF;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin: 12px 0 8px 0;
+    font-family: 'DM Mono', 'Consolas', monospace;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
