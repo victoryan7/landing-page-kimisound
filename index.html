@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KimiSound — Software Profissional de Gestão de Biblioteca e Mixagem para DJs</title>
+<meta name="description" content="KimiSound é um software profissional para DJs com crossfade adaptativo, IA Flow Score, análise offline de 180+ gêneros e exportação de playlists. Gestão inteligente da biblioteca musical." />
+<meta property="og:title" content="KimiSound — Software Profissional de Gestão de Biblioteca e Mixagem para DJs" />
+<meta property="og:description" content="Crossfade adaptativo, IA Flow Score em tempo real, análise offline de BPM, tonalidade Camelot e 180+ gêneros. A ferramenta definitiva para preparação de sets." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://kimisound.com" />
+<meta property="og:image" content="assets/mascot-icon.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" href="assets/mascot-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- floating background atmosphere -->
+<div class="atmosphere" aria-hidden="true">
+  <div class="grid-overlay"></div>
+  <div class="orb orb-cyan"></div>
+  <div class="orb orb-purple"></div>
+  <div class="orb orb-cyan-sm"></div>
+  <div class="scanline"></div>
+</div>
+
+<!-- sticky nav -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <img src="assets/mascot-icon.png" alt="" class="brand-mark" />
+    <span class="brand-word"><span class="kimi">Kimi</span><span class="sound">Sound</span></span>
+  </a>
+  <nav class="nav-links" aria-label="Primário">
+    <a href="#problema">Problema</a>
+    <a href="#tecnologia">Tecnologia</a>
+    <a href="#planos">Planos</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a href="#planos" class="btn btn-ghost btn-sm">Ver Planos</a>
+    <a href="#cta-final" class="btn btn-primary btn-sm">Baixar Grátis</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" id="navToggle">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-shell">
+
+    <div class="hero-badge reveal">
+      <span class="pulse-dot"></span>
+      <span class="mono">v1.4.1 · ATUALIZADO</span>
+      <span class="badge-sep"></span>
+      <span>DJ Flow Intelligence ativo</span>
+    </div>
+
+    <h1 class="hero-headline reveal" style="--d:.05s">
+      <span class="line">Seus Sets.</span>
+      <span class="line">Montados <span class="grad">pela IA</span>.</span>
+    </h1>
+
+    <p class="hero-sub reveal" style="--d:.15s">
+      O único software para DJs que calcula compatibilidade musical
+      em tempo real, escolhe a melhor próxima faixa e executa transições
+      inteligentes prontas para a pista em 1 clique.
+    </p>
+
+    <div class="hero-ctas reveal" style="--d:.25s">
+      <a href="#cta-final" class="btn btn-primary btn-lg">
+        <span>Começar Grátis — 14 dias sem cartão</span>
+        <span class="btn-arrow">→</span>
+      </a>
+      <a href="#tecnologia" class="btn btn-ghost btn-lg">Ver como funciona <span class="arr-down">↓</span></a>
+    </div>
+
+    <div class="hero-proof reveal" style="--d:.35s">
+      <div class="proof-quote">
+        <span class="stars">★★★★★</span>
+        <span>"Revolucionou minha preparação de sets"</span>
+      </div>
+      <div class="proof-chips">
+        <span class="chip"><span class="chip-dot c-cyan"></span>Análise em tempo real</span>
+        <span class="chip"><span class="chip-dot c-purple"></span>180+ gêneros</span>
+        <span class="chip"><span class="chip-dot c-green"></span>BPM Sync seguro</span>
+      </div>
+    </div>
+
+    <!-- hero visual: app screenshot on glow platform -->
+    <div class="hero-stage reveal" style="--d:.45s">
+      <div class="hero-platform">
+        <div class="stage-glow"></div>
+        <div class="stage-reflection"></div>
+
+        <!-- corner brackets like mission control viewport -->
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+
+        <!-- floating live readouts -->
+        <div class="readout readout-tl">
+          <div class="readout-label">FLOW SCORE</div>
+          <div class="readout-value" data-counter="81">0</div>
+          <div class="readout-bar"><span style="width:81%"></span></div>
+        </div>
+
+        <div class="readout readout-tr">
+          <div class="readout-label">BPM ANALYSIS</div>
+          <div class="readout-value mono small" id="bpmTicker">123.0</div>
+          <div class="readout-meta"><span class="dot live"></span>LIVE</div>
+        </div>
+
+        <div class="readout readout-br">
+          <div class="readout-label">CAMELOT KEY</div>
+          <div class="readout-value mono">8A</div>
+          <div class="readout-meta">harm. perfeita</div>
+        </div>
+
+        <!-- app frame -->
+        <div class="app-frame">
+          <div class="app-titlebar">
+            <span class="tl-dot r"></span><span class="tl-dot y"></span><span class="tl-dot g"></span>
+            <span class="tl-title">KimiSound — Warm Up Fino · 15 faixas · Flow 82%</span>
+          </div>
+          <img src="uploads/pasted-1779213033213-0.png" alt="Playlist Warm Up Fino com coluna Flow Score por faixa e dados reais" />
+          <div class="app-scan"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stat-strip reveal" style="--d:.55s">
+      <div class="stat">
+        <div class="stat-num mono">8<span class="unit">s</span></div>
+        <div class="stat-cap">de transição inteligente</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num mono">0,1<span class="unit">s</span></div>
+        <div class="stat-cap">por faixa</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num mono">180<span class="unit">+</span></div>
+        <div class="stat-cap">gêneros</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num mono">14<span class="unit">d</span></div>
+        <div class="stat-cap">grátis</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ PROBLEMA ============ -->
+<section class="section problem" id="problema">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">01 — O Problema</span>
+      <h2 class="h2">Você ainda monta seus sets <em>assim</em>?</h2>
+    </div>
+
+    <div class="pain-grid">
+      <article class="pain reveal">
+        <div class="pain-num mono">⏱ 03H</div>
+        <h3>3 horas desperdiçadas</h3>
+        <p>Testando transposições faixa por faixa, sem saber se vai funcionar na pista até ser tarde demais.</p>
+        <div class="pain-bar"></div>
+      </article>
+
+      <article class="pain reveal" style="--d:.1s">
+        <div class="pain-num mono">🎲 ???</div>
+        <h3>Compatibilidade no chute</h3>
+        <p>Você sente que uma faixa "encaixa" — mas não tem dados reais para confirmar. É intuição vs. certeza.</p>
+        <div class="pain-bar"></div>
+      </article>
+
+      <article class="pain reveal" style="--d:.2s">
+        <div class="pain-num mono">📁 ∞</div>
+        <h3>Biblioteca fragmentada</h3>
+        <p>Arquivos em pastas diferentes, metadados errados, sem categorização. Você sabe que tem a música certa — mas não acha.</p>
+        <div class="pain-bar"></div>
+      </article>
+    </div>
+
+    <p class="transition-line reveal">
+      "E se você pudesse <span class="grad">VER</span> a compatibilidade antes de ouvir?"
+    </p>
+  </div>
+</section>
+
+<!-- ============ SOLUÇÃO / TECNOLOGIA ============ -->
+<section class="section solution" id="tecnologia">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">02 — A Solução</span>
+      <h2 class="h2">A IA que trabalha enquanto <span class="grad">você cria</span></h2>
+      <p class="section-sub">7 tecnologias de inteligência musical integradas em uma única interface.</p>
+    </div>
+
+    <div class="feature-grid">
+
+      <article class="feat reveal feat-wide">
+        <div class="feat-visual feat-flow">
+          <div class="flow-circle">
+            <svg viewBox="0 0 120 120" class="flow-svg">
+              <circle cx="60" cy="60" r="52" class="ring-bg" />
+              <circle cx="60" cy="60" r="52" class="ring-fg" id="flowRing" />
+            </svg>
+            <div class="flow-num"><span data-counter="94">0</span></div>
+            <div class="flow-cap mono">FLOW SCORE</div>
+          </div>
+          <ul class="flow-breakdown mono">
+            <li><span>HARMONIA</span><span class="bar"><i style="width:35%"></i></span><span>35%</span></li>
+            <li><span>BPM</span><span class="bar"><i style="width:30%"></i></span><span>30%</span></li>
+            <li><span>ENERGIA</span><span class="bar"><i style="width:20%"></i></span><span>20%</span></li>
+            <li><span>GÊNERO</span><span class="bar"><i style="width:15%"></i></span><span>15%</span></li>
+          </ul>
+        </div>
+        <div class="feat-body">
+          <span class="feat-tag">FLOW SCORE</span>
+          <h3>Flow Score em Tempo Real</h3>
+          <p>Cada faixa recebe uma pontuação 0–100 calculada por IA. Verde = transição perfeita. Vermelho = evite. Você toma decisões com dados, não intuição.</p>
+        </div>
+      </article>
+
+      <article class="feat reveal" style="--d:.05s">
+        <div class="feat-visual feat-wizard">
+          <div class="wiz-steps">
+            <div class="wiz-step done"><span class="mono">01</span><span>Fonte</span></div>
+            <div class="wiz-line"></div>
+            <div class="wiz-step done"><span class="mono">02</span><span>Estilo</span></div>
+            <div class="wiz-line"></div>
+            <div class="wiz-step active"><span class="mono">03</span><span>Preview</span></div>
+          </div>
+          <div class="wiz-arc">
+            <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+              <path d="M 0 50 Q 50 50 70 35 Q 100 10 130 25 Q 160 40 200 8" class="arc-line"/>
+            </svg>
+            <div class="arc-cap mono">PEAK-TIME · 90 MIN</div>
+          </div>
+        </div>
+        <div class="feat-body">
+          <span class="feat-tag">DJ FLOW WIZARD</span>
+          <h3>Set Completo em 3 Passos</h3>
+          <p>Escolha o arco de energia, defina duração, deixe a IA montar. Pronto em segundos.</p>
+        </div>
+      </article>
+
+      <article class="feat reveal" style="--d:.1s">
+        <div class="feat-visual feat-genres">
+          <div class="genre-cloud">
+            <span class="g g-1">Tech House</span>
+            <span class="g g-2">Melodic Techno</span>
+            <span class="g g-3">Afro House</span>
+            <span class="g g-4">Deep House</span>
+            <span class="g g-5">Amapiano</span>
+            <span class="g g-6">UK Breaks</span>
+            <span class="g g-7">Trap</span>
+            <span class="g g-8">Downtempo</span>
+            <span class="g g-9 active">High-Tech</span>
+          </div>
+          <div class="auc-pill mono">ROC-AUC <strong>0.954</strong></div>
+        </div>
+        <div class="feat-body">
+          <span class="feat-tag">ANÁLISE POR IA</span>
+          <h3>180+ Gêneros Classificados</h3>
+          <p>Essentia EffNet. BPM, tonalidade em notação Camelot, energia, danceabilidade — automático.</p>
+        </div>
+      </article>
+
+      <article class="feat reveal" style="--d:.15s">
+        <div class="feat-visual feat-cross">
+          <svg viewBox="0 0 240 80" class="wave-svg" preserveAspectRatio="none">
+            <path d="M0 40 Q 15 10, 30 40 T 60 40 T 90 40 T 120 40" class="wave-a"/>
+            <path d="M120 40 Q 135 70, 150 40 T 180 40 T 210 40 T 240 40" class="wave-b"/>
+          </svg>
+          <div class="cross-marks mono">
+            <span>8 SEGUNDOS</span>
+            <span class="dim">→</span>
+            <span class="hl">SAFE BPM</span>
+          </div>
+        </div>
+        <div class="feat-body">
+          <span class="feat-tag">CROSSFADE</span>
+          <h3>Transição Inteligente</h3>
+          <p>Crossfade beat-aligned de 8 segundos com trigger adaptativo, snap a frases musicais, re-snap da faixa B no beat grid e BPM Sync seguro no Windows. A transição soa musical na prática, não só no papel.</p>
+        </div>
+      </article>
+
+      <article class="feat reveal" style="--d:.2s">
+        <div class="feat-visual feat-style">
+          <div class="donut">
+            <svg viewBox="0 0 42 42">
+              <circle cx="21" cy="21" r="15.9155" class="donut-bg"/>
+              <circle cx="21" cy="21" r="15.9155" class="donut-seg s1" stroke-dasharray="34 100" stroke-dashoffset="0"/>
+              <circle cx="21" cy="21" r="15.9155" class="donut-seg s2" stroke-dasharray="26 100" stroke-dashoffset="-34"/>
+              <circle cx="21" cy="21" r="15.9155" class="donut-seg s3" stroke-dasharray="20 100" stroke-dashoffset="-60"/>
+              <circle cx="21" cy="21" r="15.9155" class="donut-seg s4" stroke-dasharray="12 100" stroke-dashoffset="-80"/>
+            </svg>
+            <div class="donut-cap"><span class="mono">152</span><small>faixas ouvidas</small></div>
+          </div>
+          <ul class="legend mono">
+            <li><i class="sw s1"></i>Afro House <b>34%</b></li>
+            <li><i class="sw s2"></i>Tech House <b>26%</b></li>
+            <li><i class="sw s3"></i>Amapiano <b>20%</b></li>
+            <li><i class="sw s4"></i>Outros <b>20%</b></li>
+          </ul>
+        </div>
+        <div class="feat-body">
+          <span class="feat-tag">MEU ESTILO</span>
+          <h3>IA que Aprende seu Estilo</h3>
+          <p>Aprende seus gêneros favoritos, faixa de BPM e padrões de energia. Mais uso, mais preciso.</p>
+        </div>
+      </article>
+
+      <article class="feat reveal" style="--d:.25s">
+        <div class="feat-visual feat-discover">
+          <div class="suggest">
+            <div class="sug-head mono"><span class="dot live"></span>3 FAIXAS COMPATÍVEIS</div>
+            <div class="sug-row">
+              <span class="sug-score">96</span>
+              <span class="sug-title">Adam Ten — Polaris</span>
+              <span class="sug-meta mono">123 · 8A</span>
+            </div>
+            <div class="sug-row">
+              <span class="sug-score">91</span>
+              <span class="sug-title">Tale Of Us — Astral</span>
+              <span class="sug-meta mono">122 · 9A</span>
+            </div>
+            <div class="sug-row">
+              <span class="sug-score">88</span>
+              <span class="sug-title">Mind Against — Hex</span>
+              <span class="sug-meta mono">124 · 7A</span>
+            </div>
+          </div>
+        </div>
+        <div class="feat-body">
+          <span class="feat-tag">TRACK DISCOVERY</span>
+          <h3>Descoberta Inteligente</h3>
+          <p>Com base no DNA do seu set atual, sugerimos faixas que você deveria incluir — mas ainda não considerou.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOCIAL PROOF + STATS ============ -->
+<section class="section testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">03 — Resultados Reais</span>
+      <h2 class="h2">DJs que já usam o <span class="grad">KimiSound</span></h2>
+    </div>
+
+    <div class="testi-grid">
+      <article class="testi reveal">
+        <div class="quote-mark">"</div>
+        <p>Eu gastava 4 horas toda semana preparando sets. Hoje faço em <strong>20 minutos</strong> com uma qualidade muito maior. O Flow Score mudou minha forma de pensar harmonia.</p>
+        <footer>
+          <div class="avatar" style="--c1:#00C2FF;--c2:#7B61FF">RM</div>
+          <div>
+            <div class="who">Rodrigo M.</div>
+            <div class="role mono">DJ RESIDENTE · SÃO PAULO</div>
+          </div>
+          <div class="stars">★★★★★</div>
+        </footer>
+      </article>
+
+      <article class="testi reveal" style="--d:.1s">
+        <div class="quote-mark">"</div>
+        <p>A parte de descoberta de faixas é surreal. Ele encontrou combinações que eu <strong>nunca teria pensado</strong> — e funcionaram perfeitamente na pista.</p>
+        <footer>
+          <div class="avatar" style="--c1:#7B61FF;--c2:#E8430A">BL</div>
+          <div>
+            <div class="who">Beatriz L.</div>
+            <div class="role mono">DJ & PRODUTORA · RIO DE JANEIRO</div>
+          </div>
+          <div class="stars">★★★★★</div>
+        </footer>
+      </article>
+
+      <article class="testi reveal" style="--d:.2s">
+        <div class="quote-mark">"</div>
+        <p>Finalmente um software que trata a biblioteca do DJ com a seriedade que merece. O export para Pioneer foi o <strong>último prego no caixão</strong> do trabalho manual.</p>
+        <footer>
+          <div class="avatar" style="--c1:#00D084;--c2:#00C2FF">TV</div>
+          <div>
+            <div class="who">Thiago V.</div>
+            <div class="role mono">DJ TÉCNICO · CURITIBA</div>
+          </div>
+          <div class="stars">★★★★★</div>
+        </footer>
+      </article>
+    </div>
+
+    <div class="bigstats reveal">
+      <div class="bs">
+        <div class="bs-num mono"><span data-counter="8">0</span><span class="bs-unit">s</span></div>
+        <div class="bs-cap">para montar um set completo</div>
+      </div>
+      <div class="bs">
+        <div class="bs-num mono"><span data-counter="180">0</span><span class="bs-unit">+</span></div>
+        <div class="bs-cap">gêneros classificados pela IA</div>
+      </div>
+      <div class="bs">
+        <div class="bs-num mono">0,<span data-counter="1">0</span><span class="bs-unit">s</span></div>
+        <div class="bs-cap">por faixa analisada</div>
+      </div>
+      <div class="bs">
+        <div class="bs-num mono"><span data-counter="14">0</span><span class="bs-unit">d</span></div>
+        <div class="bs-cap">de teste grátis, sem cartão</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DEEP DIVE ============ -->
+<section class="section deepdive">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">04 — Em Profundidade</span>
+      <h2 class="h2">Tecnologia de estúdio.<br/><span class="grad">Simplicidade de uso.</span></h2>
+    </div>
+
+    <div class="dd-row reveal">
+      <div class="dd-text">
+        <span class="dd-label mono">ANÁLISE MUSICAL</span>
+        <h3>Veja <em>antes</em> de ouvir</h3>
+        <p>Cada faixa exibe BPM, tonalidade em notação Camelot, energia, gênero e Flow Score — calculados em 0,1 segundo. Decisões com dados, não com intuição.</p>
+        <ul class="dd-list">
+          <li><span class="mono">→</span>BPM e Camelot Key automáticos</li>
+          <li><span class="mono">→</span>180+ gêneros via Essentia EffNet</li>
+          <li><span class="mono">→</span>Energia e danceabilidade em escala 0–10</li>
+        </ul>
+      </div>
+      <div class="dd-image">
+        <div class="app-frame app-frame-tilt">
+          <div class="app-titlebar"><span class="tl-dot r"></span><span class="tl-dot y"></span><span class="tl-dot g"></span><span class="tl-title">Playlist · Warm Up Fino · Flow 82%</span></div>
+          <img src="uploads/pasted-1779213033213-0.png" alt="Playlist real com Flow Score por faixa e registros" />
+          <div class="dd-glow"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dd-row dd-flip reveal">
+      <div class="dd-text">
+        <span class="dd-label mono">DJ FLOW WIZARD</span>
+        <h3>Do caos ao set <span class="grad">em 3 cliques</span></h3>
+        <p>Selecione o template de energia — Warm-Up gradual, Peak-Time explosivo, Festival épico, After-Hours hipnótico. A IA seleciona, ordena e calibra as transições, incluindo o ponto certo de entrada da próxima faixa.</p>
+        <div class="dd-templates">
+          <span class="tmpl">Warm-Up</span>
+          <span class="tmpl active">Peak-Time</span>
+          <span class="tmpl">Festival</span>
+          <span class="tmpl">After-Hours</span>
+        </div>
+      </div>
+      <div class="dd-image">
+        <div class="app-frame app-frame-tilt flip">
+          <div class="app-titlebar"><span class="tl-dot r"></span><span class="tl-dot y"></span><span class="tl-dot g"></span><span class="tl-title">DJ Flow Wizard · Etapa 3 de 3</span></div>
+          <img src="uploads/21_dj_flow_wizard_step3_dark.png" alt="Wizard preview e confirmação" />
+          <div class="dd-glow purple"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dd-row reveal">
+      <div class="dd-text">
+        <span class="dd-label mono">MEU ESTILO</span>
+        <h3>A IA que aprende <em>com você</em></h3>
+        <p>O dashboard Meu Estilo mostra exatamente o que a IA aprendeu — distribuição de gêneros, faixa de BPM favorita, padrões de energia. Granular e resetável.</p>
+        <div class="dd-meta mono">
+          <div><span>TOP GÊNERO</span><strong>Melodic Techno</strong></div>
+          <div><span>BPM MÉDIO</span><strong>123.4</strong></div>
+          <div><span>ENERGIA</span><strong>7.8 / 10</strong></div>
+        </div>
+      </div>
+      <div class="dd-image">
+        <div class="app-frame app-frame-tilt">
+          <div class="app-titlebar"><span class="tl-dot r"></span><span class="tl-dot y"></span><span class="tl-dot g"></span><span class="tl-title">Meu Estilo Musical</span></div>
+          <img src="uploads/46_settings_meuestilo_dashboard_dark.png" alt="Dashboard Meu Estilo Musical com registros reais" />
+          <div class="dd-glow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section pricing" id="planos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">05 — Planos</span>
+      <h2 class="h2">Invista no seu <span class="grad">tempo de criação</span></h2>
+      <p class="section-sub">14 dias grátis no Pro. Sem cartão de crédito.</p>
+
+      <div class="toggle reveal" style="--d:.1s" role="tablist" aria-label="Período">
+        <button class="t-opt active" data-period="monthly" aria-selected="true">Mensal</button>
+        <button class="t-opt" data-period="annual" aria-selected="false">Anual <span class="save">Economize 17%</span></button>
+        <span class="t-pill"></span>
+      </div>
+    </div>
+
+    <div class="plans">
+      <article class="plan reveal">
+        <header class="plan-head">
+          <span class="plan-name">Free</span>
+          <span class="plan-tag mono">START</span>
+        </header>
+        <div class="plan-price">
+          <span class="currency">R$</span>
+          <span class="amount">0</span>
+          <span class="period">/ para sempre</span>
+        </div>
+        <ul class="plan-features">
+          <li><span class="ck">✓</span>Até 10 faixas na biblioteca</li>
+          <li><span class="ck">✓</span>Flow Score (teaser ★ — veja o preview)</li>
+          <li><span class="ck">✓</span>Player básico com Auto-Play</li>
+          <li><span class="ck">✓</span>10 análises / mês (BPM, Key, Gênero)</li>
+          <li><span class="ck">✓</span>10 exportações / mês</li>
+          <li><span class="ck">✓</span>Organização local da biblioteca</li>
+          <li><span class="ck">✓</span>1 dispositivo</li>
+        </ul>
+        <a href="#cta-final" class="btn btn-ghost btn-block">Começar Grátis</a>
+      </article>
+
+      <article class="plan plan-pro plan-featured reveal" style="--d:.08s">
+        <div class="plan-badge mono">★ MAIS POPULAR</div>
+        <header class="plan-head">
+          <span class="plan-name">Pro</span>
+          <span class="plan-tag mono">14 DIAS GRÁTIS</span>
+        </header>
+        <div class="plan-price">
+          <span class="currency">R$</span>
+          <span class="amount" data-monthly="19" data-annual="190">19</span>
+          <span class="period" data-monthly="/ mês" data-annual="/ ano">/ mês</span>
+        </div>
+        <p class="plan-alt-price mono" data-monthly="ou R$ 190/ano" data-annual="ou R$ 19/mês">ou R$ 190/ano</p>
+        <ul class="plan-features">
+          <li><span class="ck">✓</span>Até 100 faixas na biblioteca</li>
+          <li><span class="ck">✓</span>DJ Flow Intelligence completo</li>
+          <li><span class="ck">✓</span>Flow Wizard + Auto-Sequenciar em 1 clique</li>
+          <li><span class="ck">✓</span>6 templates de arco de energia</li>
+          <li><span class="ck">✓</span>Transição Inteligente (crossfade beat-aligned)</li>
+          <li><span class="ck">✓</span>BPM Sync seguro no Windows + entry snap automático</li>
+          <li><span class="ck">✓</span>Smart Playlists ilimitadas</li>
+          <li><span class="ck">✓</span>Edição completa de metadados</li>
+          <li><span class="ck">✓</span>Fluxo completo de preparação local</li>
+          <li><span class="ck">✓</span>100 análises / mês</li>
+          <li><span class="ck">✓</span>Reordenação manual (drag & drop)</li>
+          <li><span class="ck">✓</span>1 dispositivo</li>
+        </ul>
+        <a href="#cta-final" class="btn btn-primary btn-block">Testar 14 dias grátis</a>
+      </article>
+
+      <article class="plan plan-studio reveal" style="--d:.16s">
+        <header class="plan-head">
+          <span class="plan-name">Studio</span>
+          <span class="plan-tag mono">PROFISSIONAL</span>
+        </header>
+        <div class="plan-price">
+          <span class="currency">R$</span>
+          <span class="amount" data-monthly="49" data-annual="490">49</span>
+          <span class="period" data-monthly="/ mês" data-annual="/ ano">/ mês</span>
+        </div>
+        <p class="plan-alt-price mono" data-monthly="ou R$ 490/ano" data-annual="ou R$ 49/mês">ou R$ 490/ano</p>
+        <ul class="plan-features">
+          <li><span class="ck">✓</span>Faixas ilimitadas</li>
+          <li><span class="ck">✓</span>Tudo do Pro +</li>
+          <li><span class="ck">✓</span>Collections (sub-bibliotecas)</li>
+          <li><span class="ck">✓</span>Arc Designer customizável</li>
+          <li><span class="ck">✓</span>Estilos Harmônicos (Camelot Wheel)</li>
+          <li><span class="ck">✓</span>Meu Estilo completo (dashboard + histórico)</li>
+          <li><span class="ck">✓</span>Descoberta Inteligente de Faixas</li>
+          <li><span class="ck">✓</span>Curadoria avançada para sets e coleções</li>
+          <li><span class="ck">✓</span>Export Pioneer USB (CDJ/XDJ)</li>
+          <li><span class="ck">✓</span>3 dispositivos simultâneos</li>
+          <li><span class="ck">✓</span>Suporte prioritário</li>
+          <li><span class="ck">✓</span>Acesso antecipado a betas</li>
+        </ul>
+        <a href="#cta-final" class="btn btn-purple btn-block">Escolher Studio</a>
+      </article>
+    </div>
+
+    <div class="guarantee reveal">
+      <div class="guarantee-icon">🛡️</div>
+      <h3>30 dias de garantia</h3>
+      <p>Se não gostar, reembolso integral sem perguntas. Cancele quando quiser pelo Stripe Customer Portal. Sem multa, sem letra miúda.</p>
+    </div>
+
+    <p class="pricing-foot mono">Todos os planos incluem atualizações automáticas · Cancele quando quiser · Cupom <strong>PRIMEIRA</strong> = 30% off no primeiro mês</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section faq" id="faq">
+  <div class="container container-narrow">
+    <div class="section-head reveal">
+      <span class="eyebrow">06 — Perguntas Frequentes</span>
+      <h2 class="h2">Respostas <span class="grad">diretas</span></h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item reveal"><summary><span>O KimiSound roda no meu computador?</span><span class="plus"></span></summary><div class="faq-a">O executável oficial roda em Windows 10/11 (64-bit). macOS e Linux são suportados rodando direto do código-fonte com Python 3.12+. O app funciona 100% offline após a instalação.</div></details>
+      <details class="faq-item reveal"><summary><span>Preciso de cartão de crédito para o trial?</span><span class="plus"></span></summary><div class="faq-a">Não. Os 14 dias de trial Pro são completamente gratuitos, sem necessidade de cartão. Após o trial, você continua no plano Free automaticamente.</div></details>
+      <details class="faq-item reveal"><summary><span>O que acontece quando o trial acaba?</span><span class="plus"></span></summary><div class="faq-a">Você continua automaticamente no plano Free com suas faixas intactas. Nenhuma cobrança surpresa. Seus dados nunca são perdidos.</div></details>
+      <details class="faq-item reveal"><summary><span>O BPM Sync funciona bem no Windows?</span><span class="plus"></span></summary><div class="faq-a">Sim. O KimiSound usa um modo seguro no Windows: mantém beat alignment e o ponto de entrada da faixa B alinhado ao beat grid sem depender de time-stretch instável em tempo real. Resultado: a transição continua musical sem sumir com o áudio.</div></details>
+      <details class="faq-item reveal"><summary><span>O que acontece se eu ultrapassar 100 faixas no Pro?</span><span class="plus"></span></summary><div class="faq-a">Você recebe um aviso sugerindo o upgrade para Studio. Nenhuma faixa é perdida — sua biblioteca fica intacta enquanto você decide.</div></details>
+      <details class="faq-item reveal"><summary><span>Como funciona o reembolso?</span><span class="plus"></span></summary><div class="faq-a">30 dias de garantia em todos os planos pagos. Se não gostar, reembolso integral sem perguntas pelo Stripe Customer Portal. Sem multa, sem burocracia.</div></details>
+      <details class="faq-item reveal"><summary><span>O KimiSound funciona offline?</span><span class="plus"></span></summary><div class="faq-a">Sim. Toda a análise musical, Flow Score e preparação de sets funcionam 100% offline. Nenhuma conexão é necessária para usar o core do app. Seus dados ficam sempre no seu computador.</div></details>
+      <details class="faq-item reveal"><summary><span>Compatível com CDJ/XDJ da Pioneer?</span><span class="plus"></span></summary><div class="faq-a">Sim! A exportação USB Pioneer gera um arquivo exportLibrary.db compatível com CDJ e XDJ. Disponível no plano Studio.</div></details>
+      <details class="faq-item reveal"><summary><span>Posso usar em mais de um computador?</span><span class="plus"></span></summary><div class="faq-a">Free e Pro permitem 1 dispositivo ativo. Studio permite até 3 dispositivos simultâneos.</div></details>
+      <details class="faq-item reveal"><summary><span>Como o Flow Score é calculado?</span><span class="plus"></span></summary><div class="faq-a">Algoritmo com 5 dimensões ponderadas: harmonia Camelot (35%), BPM (30%), energia (20%), gênero (15%), timbre (10%). Tudo calculado em 0,1 segundo por faixa.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section cta-final" id="cta-final">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div class="cta-mascot">
+        <img src="assets/mascot-dj.png" alt="KimiSound mascote DJ" />
+      </div>
+      <div class="cta-content">
+        <span class="eyebrow">PRONTO PARA COMEÇAR?</span>
+        <h2 class="h2">Seu próximo set vai ser <span class="grad">diferente</span>.</h2>
+        <p>Comece hoje. 14 dias grátis. Sem cartão.</p>
+        <div class="cta-buttons">
+          <a href="#" class="btn btn-primary btn-lg">
+            <span>Baixar KimiSound Grátis</span>
+            <span class="btn-arrow">↓</span>
+          </a>
+          <a href="#planos" class="btn btn-ghost btn-lg">Comparar planos</a>
+        </div>
+        <div class="cta-fineprint mono">
+          <span>● Windows 10/11 (64-bit)</span>
+          <span>● macOS/Linux via código-fonte</span>
+          <span>● Instalação local segura</span>
+          <span>● Sem cartão</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="foot-brand">
+      <a class="brand" href="#top">
+        <img src="assets/mascot-icon.png" alt="" class="brand-mark" />
+        <span class="brand-word"><span class="kimi">Kimi</span><span class="sound">Sound</span></span>
+      </a>
+      <p class="foot-tag">Seus sets. Montados pela IA.</p>
+    </div>
+    <nav class="foot-col">
+      <h4>Produto</h4>
+      <a href="#tecnologia">Tecnologia</a>
+      <a href="#planos">Planos</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <nav class="foot-col">
+      <h4>Empresa</h4>
+      <a href="#">Sobre</a>
+      <a href="#">Contato</a>
+      <a href="#">Política de Privacidade</a>
+    </nav>
+    <nav class="foot-col">
+      <h4>Plataformas</h4>
+      <a href="#">Windows 10/11 (executável)</a>
+      <a href="#">macOS / Linux (código-fonte)</a>
+    </nav>
+  </div>
+  <div class="container foot-bottom">
+    <span class="mono">© 2026 KimiSound · Todos os direitos reservados</span>
+    <span class="mono">v1.4.1 · Build 2026.05</span>
+  </div>
+</footer>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

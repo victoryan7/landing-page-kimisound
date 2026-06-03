@@ -1,0 +1,17 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 430">
+  <defs>
+    
+  </defs>
+
+  
+  <rect x="240" y="90" width="30" height="100" rx="15" ry="15" fill="#E8430A"></rect>
+  
+  <rect x="290" y="40" width="30" height="200" rx="15" ry="15" fill="#E8430A"></rect>
+  
+  <rect x="340" y="90" width="30" height="100" rx="15" ry="15" fill="#E8430A"></rect>
+  
+  <circle cx="405" cy="140" r="15" fill="#E8430A"></circle>
+  <text x="330" y="375" text-anchor="middle" font-family="&#39;Gotham&#39;,&#39;Poppins&#39;,&#39;Century Gothic&#39;,sans-serif" font-weight="700" font-size="108" letter-spacing="-1">
+    <tspan fill="#ffffff">Kimi</tspan><tspan fill="#E8430A">Sound</tspan>
+  </text>
+</svg>
