@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pagamento cancelado — KimiSound</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/png" href="assets/mascot-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+/* Reuse same status-page styles */
+.status-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+}
+.status-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 48px 40px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.status-icon {
+  font-size: 56px;
+  margin-bottom: 16px;
+  display: block;
+}
+.status-card h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+.status-card p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+.status-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  background: var(--grad);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 28px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #0F1117;
+  cursor: pointer;
+  transition: opacity .2s, transform .15s;
+  text-decoration: none;
+}
+.status-btn:hover {
+  opacity: .9;
+  transform: translateY(-1px);
+}
+.status-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 28px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+  text-decoration: none;
+  margin-left: 8px;
+}
+.status-btn-secondary:hover {
+  background: var(--surface-2);
+  border-color: var(--muted);
+}
+.status-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 20px;
+  line-height: 1.5;
+}
+.status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="atmosphere" aria-hidden="true">
+  <div class="grid-overlay"></div>
+  <div class="orb orb-cyan" style="top:15%;left:30%;transform:scale(1.2)"></div>
+  <div class="orb orb-purple" style="bottom:15%;right:30%;transform:scale(1)"></div>
+  <div class="scanline"></div>
+</div>
+
+<main class="status-page">
+  <div class="status-card">
+    <span class="status-icon">💡</span>
+    <h1>Pagamento não concluído</h1>
+    <p>Você cancelou o pagamento ou ele não foi processado.</p>
+    <p>Nenhum valor foi cobrado. Seu acesso continua <strong>gratuito</strong> normalmente.</p>
+    <div class="status-actions">
+      <a href="/#planos" class="status-btn">← Tentar novamente</a>
+      <a href="/" class="status-btn-secondary">Voltar para o site</a>
+    </div>
+    <div class="status-note">
+      Se você encontrou alguma dificuldade, entre em contato pelo email <strong>contato@kimisound.com.br</strong>.
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

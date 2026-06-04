@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pagamento confirmado — KimiSound</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/png" href="assets/mascot-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+/* Minimal override for status pages */
+.status-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+}
+.status-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 48px 40px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.status-icon {
+  font-size: 56px;
+  margin-bottom: 16px;
+  display: block;
+}
+.status-card h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+.status-card p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+.status-highlight {
+  color: var(--cyan) !important;
+  font-weight: 600;
+}
+.status-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  background: var(--grad);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 28px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #0F1117;
+  cursor: pointer;
+  transition: opacity .2s, transform .15s;
+  text-decoration: none;
+}
+.status-btn:hover {
+  opacity: .9;
+  transform: translateY(-1px);
+}
+.status-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 20px;
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<div class="atmosphere" aria-hidden="true">
+  <div class="grid-overlay"></div>
+  <div class="orb orb-cyan" style="top:10%;left:50%;transform:translateX(-50%) scale(1.5)"></div>
+  <div class="orb orb-purple" style="bottom:10%;right:30%;transform:scale(1.2)"></div>
+  <div class="scanline"></div>
+</div>
+
+<main class="status-page">
+  <div class="status-card">
+    <span class="status-icon">🎉</span>
+    <h1>Pagamento confirmado!</h1>
+    <p>Sua assinatura <strong class="status-highlight">KimiSound</strong> foi ativada com sucesso.</p>
+    <p>Enviamos sua chave de licença para o email informado no checkout.</p>
+    <p style="margin-top:12px;">💡 <strong>Não recebeu?</strong> Verifique sua caixa de spam ou aguarde alguns minutos.</p>
+    <a href="/" class="status-btn">← Voltar para o site</a>
+    <div class="status-note">
+      Abra o KimiSound no seu computador, vá em <strong>Ativar Licença</strong> e cole a chave recebida.
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

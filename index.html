@@ -686,46 +686,193 @@
   </div>
 </footer>
 
+<!-- ============ CHECKOUT MODAL ============ -->
+<div id="checkout-overlay" class="checkout-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-plan-name">
+  <div class="checkout-modal">
+    <button class="modal-close" id="modal-close" aria-label="Fechar">&times;</button>
+
+    <div class="modal-header">
+      <div class="modal-plan-badge">Pagamento 100% seguro via Stripe 🔒</div>
+      <h3 class="modal-plan-name" id="modal-plan-name">KimiSound Pro</h3>
+      <div class="modal-price-row">
+        <span class="modal-amount" id="modal-amount">R$ 19</span>
+        <span class="modal-period" id="modal-period">/ mês</span>
+      </div>
+    </div>
+
+    <form id="checkout-form" novalidate>
+      <div class="modal-email-group" id="email-group">
+        <label for="checkout-email">Seu melhor email</label>
+        <input type="email" id="checkout-email" placeholder="voce@exemplo.com" required autocomplete="email" spellcheck="false" />
+      </div>
+
+      <div class="modal-error" id="modal-error" role="alert"></div>
+
+      <button type="submit" class="modal-submit" id="modal-submit">
+        <span class="modal-submit-text">Continuar para pagamento</span>
+        <div class="modal-loading" id="modal-loading">
+          <svg class="spinner" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity=".3"/>
+            <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <span>Redirecionando para Stripe...</span>
+        </div>
+      </button>
+    </form>
+
+    <div class="modal-footer">
+      <span>🔒 Pagamento criptografado</span>
+      <span>📧 Licença enviada por email</span>
+      <span>↩️ 7 dias de garantia</span>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <script src="app.js"></script>
 
 <script>
-// Stripe Checkout - plano Pro/Studio
+// Stripe Checkout - modal elegante
 (function() {
+  'use strict';
   var BACKEND = 'https://kimisound-production.up.railway.app';
+
+  var overlay    = document.getElementById('checkout-overlay');
+  var closeBtn   = document.getElementById('modal-close');
+  var form       = document.getElementById('checkout-form');
+  var emailInput = document.getElementById('checkout-email');
+  var emailGroup = document.getElementById('email-group');
+  var errorBox   = document.getElementById('modal-error');
+  var submitBtn  = document.getElementById('modal-submit');
+  var submitText = document.querySelector('.modal-submit-text');
+  var loadingEl  = document.getElementById('modal-loading');
+  var planNameEl = document.getElementById('modal-plan-name');
+  var amountEl   = document.getElementById('modal-amount');
+  var periodEl   = document.getElementById('modal-period');
+
+  var currentPlan = 'pro';
+
+  var PLAN_MAP = {
+    monthly: { pro: 'pro', studio: 'studio' },
+    annual:  { pro: 'pro_anual', studio: 'studio_anual' }
+  };
+
+  var PLAN_INFO = {
+    pro:          { name: 'KimiSound Pro',  amount: 'R$ 19',  period: '/ m\u00eas' },
+    pro_anual:    { name: 'KimiSound Pro',  amount: 'R$ 190', period: '/ ano' },
+    studio:       { name: 'KimiSound Studio', amount: 'R$ 49',  period: '/ m\u00eas' },
+    studio_anual: { name: 'KimiSound Studio', amount: 'R$ 490', period: '/ ano' }
+  };
+
+  function getPeriod() {
+    var active = document.querySelector('.t-opt.active');
+    return active ? active.dataset.period : 'monthly';
+  }
+
+  function openModal(planKey) {
+    currentPlan = planKey;
+    var info = PLAN_INFO[planKey];
+    if (info) {
+      planNameEl.textContent = info.name;
+      amountEl.textContent   = info.amount;
+      periodEl.textContent   = info.period;
+    }
+    emailInput.value = '';
+    emailGroup.classList.remove('invalid', 'valid');
+    errorBox.style.display = 'none';
+    submitText.style.display = 'inline';
+    loadingEl.style.display = 'none';
+    submitBtn.disabled = false;
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(function() { overlay.classList.add('visible'); });
+    emailInput.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+    setTimeout(function() { overlay.style.display = 'none'; }, 300);
+  }
+
+  // Open modal on plan button click
   document.querySelectorAll('.plan-checkout').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
-      var plan = this.getAttribute('data-plan');
-      var label = plan === 'studio' ? 'Studio' : 'Pro';
-      var email = prompt('Digite seu email para receber a licenca apos o pagamento:', '');
-      if (!email) return;
-      var orig = this.textContent;
-      this.textContent = 'Abrindo pagamento...';
-      fetch(BACKEND + '/checkout', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email: email, plan: plan})
-      })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        if (data.checkout_url) {
-          window.open(data.checkout_url, '_blank');
-          this.textContent = '\u2713 Checkout aberto!';
-          var self = this;
-          setTimeout(function() {
-            self.textContent = orig;
-          }, 5000);
-        } else {
-          alert('Erro ao iniciar pagamento. Tente novamente.');
-          this.textContent = orig;
-        }
-      })
-      .catch(function() {
-        alert('Erro de conexao com o servidor. Verifique sua internet.');
-        this.textContent = orig;
-      });
+      var basePlan = this.getAttribute('data-plan') || 'pro';
+      var period   = getPeriod();
+      var planKey  = (PLAN_MAP[period] && PLAN_MAP[period][basePlan]) || basePlan;
+      openModal(planKey);
+    });
+  });
+
+  // Close modal
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay.classList.contains('visible')) closeModal();
+  });
+
+  // Live email validation
+  emailInput.addEventListener('input', function() {
+    var val = this.value.trim();
+    if (val.length > 0) {
+      if (val.indexOf('@') !== -1 && val.indexOf('.') !== -1) {
+        emailGroup.classList.remove('invalid');
+        emailGroup.classList.add('valid');
+      } else {
+        emailGroup.classList.remove('valid');
+        emailGroup.classList.add('invalid');
+      }
+    } else {
+      emailGroup.classList.remove('invalid', 'valid');
+    }
+  });
+
+  // Submit
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = emailInput.value.trim();
+
+    if (!email || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+      emailGroup.classList.add('invalid');
+      errorBox.textContent = 'Por favor, insira um email v\u00e1lido.';
+      errorBox.style.display = 'block';
+      emailInput.focus();
+      return;
+    }
+
+    submitText.style.display = 'none';
+    loadingEl.style.display = 'flex';
+    submitBtn.disabled = true;
+    errorBox.style.display = 'none';
+
+    fetch(BACKEND + '/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, plan: currentPlan })
+    })
+    .then(function(r) {
+      if (!r.ok) throw new Error('Erro ao iniciar pagamento');
+      return r.json();
+    })
+    .then(function(data) {
+      if (data.checkout_url) {
+        window.location.href = data.checkout_url;
+      } else {
+        throw new Error('URL de pagamento n\u00e3o recebida');
+      }
+    })
+    .catch(function(err) {
+      submitText.style.display = 'inline';
+      loadingEl.style.display = 'none';
+      submitBtn.disabled = false;
+      errorBox.textContent = err.message || 'Erro de conex\u00e3o com o servidor. Verifique sua internet.';
+      errorBox.style.display = 'block';
     });
   });
 })();
