@@ -529,7 +529,7 @@
           <li><span class="ck">✓</span>Organização local da biblioteca</li>
           <li><span class="ck">✓</span>1 dispositivo</li>
         </ul>
-        <a href="#cta-final" class="btn btn-ghost btn-block">Começar Grátis</a>
+        <a href="https://github.com/victoryan7/KimiSound/releases/download/v1.7.0/KimiSound-Setup-1.7.0.exe" target="_blank" rel="noopener" class="btn btn-ghost btn-block download-link">Começar Grátis</a>
       </article>
 
       <article class="plan plan-pro plan-featured reveal" style="--d:.08s">
@@ -558,7 +558,7 @@
           <li><span class="ck">✓</span>Reordenação manual (drag & drop)</li>
           <li><span class="ck">✓</span>1 dispositivo</li>
         </ul>
-        <a href="https://github.com/victoryan7/KimiSound/releases/download/v1.7.0/KimiSound-Setup-1.7.0.exe" target="_blank" rel="noopener" class="btn btn-primary btn-block download-link">Testar 14 dias grátis</a>
+        <a href="#" class="btn btn-primary btn-block plan-checkout" data-plan="pro">Testar 14 dias grátis</a>
       </article>
 
       <article class="plan plan-studio reveal" style="--d:.16s">
@@ -586,7 +586,7 @@
           <li><span class="ck">✓</span>Suporte prioritário</li>
           <li><span class="ck">✓</span>Acesso antecipado a betas</li>
         </ul>
-        <a href="#cta-final" class="btn btn-purple btn-block">Escolher Studio</a>
+        <a href="#" class="btn btn-purple btn-block plan-checkout" data-plan="studio">Escolher Studio</a>
       </article>
     </div>
 
@@ -689,5 +689,47 @@
 </main>
 
 <script src="app.js"></script>
+
+<script>
+// Stripe Checkout - plano Pro/Studio
+(function() {
+  var BACKEND = 'https://kimisound-production.up.railway.app';
+  document.querySelectorAll('.plan-checkout').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var plan = this.getAttribute('data-plan');
+      var label = plan === 'studio' ? 'Studio' : 'Pro';
+      var email = prompt('Digite seu email para receber a licenca apos o pagamento:', '');
+      if (!email) return;
+      var orig = this.textContent;
+      this.textContent = 'Abrindo pagamento...';
+      fetch(BACKEND + '/checkout', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email: email, plan: plan})
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.checkout_url) {
+          window.open(data.checkout_url, '_blank');
+          this.textContent = '\u2713 Checkout aberto!';
+          var self = this;
+          setTimeout(function() {
+            self.textContent = orig;
+          }, 5000);
+        } else {
+          alert('Erro ao iniciar pagamento. Tente novamente.');
+          this.textContent = orig;
+        }
+      })
+      .catch(function() {
+        alert('Erro de conexao com o servidor. Verifique sua internet.');
+        this.textContent = orig;
+      });
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
