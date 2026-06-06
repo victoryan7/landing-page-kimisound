@@ -37,6 +37,7 @@
   <nav class="nav-links" aria-label="Primário">
     <a href="#problema">Problema</a>
     <a href="#tecnologia">Tecnologia</a>
+    <a href="#auto-treinamento">Auto-Treino</a>
     <a href="#planos">Planos</a>
     <a href="#faq">FAQ</a>
   </nav>
@@ -494,11 +495,122 @@
   </div>
 </section>
 
+<!-- ============ AUTO-TREINAMENTO ============ -->
+<section class="section self-train" id="auto-treinamento">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">05 — Auto-Treinamento</span>
+      <h2 class="h2">O classificador que <span class="grad">aprende com você</span></h2>
+      <p class="section-sub">Corrija o gênero de UMA faixa — a IA nunca mais erra músicas similares. 100% offline, 100% privado.</p>
+    </div>
+
+    <div class="st-grid">
+
+      <article class="st-card reveal">
+        <div class="st-visual">
+          <div class="st-demo">
+            <div class="st-demo-row">
+              <span class="st-demo-label">Gênero atual:</span>
+              <span class="st-demo-value wrong">Tech House</span>
+              <span class="st-demo-arrow">✕</span>
+            </div>
+            <div class="st-demo-row corrected">
+              <span class="st-demo-label">Corrigido para:</span>
+              <span class="st-demo-value right">Melodic Techno</span>
+              <span class="st-demo-arrow check">✓</span>
+            </div>
+            <div class="st-demo-feedback">
+              <span class="mono st-badge">🧠 embedding 1280-d registrado</span>
+            </div>
+          </div>
+        </div>
+        <div class="st-body">
+          <span class="st-icon">✏️</span>
+          <h3>Corrija e Ensine</h3>
+          <p>Clique no gênero de qualquer faixa na tabela, selecione o valor correto — e o <strong>Self-Training Engine</strong> captura o embedding 1280-dim da faixa, adiciona ao índice FAISS incremental e o classificador passa a reconhecer padrões similares automaticamente.</p>
+          <div class="st-tech mono">
+            <span>🔍 deduplication por track_id</span>
+            <span>💾 save atômico com os.replace</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="st-card reveal" style="--d:.1s">
+        <div class="st-visual">
+          <div class="st-privacy">
+            <div class="st-privacy-icon">🔒</div>
+            <div class="st-privacy-graph">
+              <svg viewBox="0 0 200 100" class="st-privacy-svg">
+                <rect x="10" y="30" width="40" height="70" rx="6" class="bar-cloud" />
+                <rect x="80" y="10" width="40" height="90" rx="6" class="bar-local active" />
+                <rect x="150" y="50" width="40" height="50" rx="6" class="bar-cloud" />
+                <text x="30" y="96" class="bar-label">Nuvem</text>
+                <text x="90" y="96" class="bar-label local">Local</text>
+                <text x="160" y="96" class="bar-label">Nuvem</text>
+              </svg>
+            </div>
+            <div class="st-privacy-tag mono">SEUS DADOS FICAM NO SEU PC</div>
+          </div>
+        </div>
+        <div class="st-body">
+          <span class="st-icon">🔐</span>
+          <h3>100% Offline e Privado</h3>
+          <p>Diferente de serviços em nuvem que vendem seu perfil musical, o KimiSound processa <strong>tudo localmente</strong>. O índice FAISS, os embeddings e as correções nunca saem do seu computador.</p>
+          <ul class="st-list">
+            <li>✅ Nenhum dado enviado para servidor</li>
+            <li>✅ Sem conta obrigatória</li>
+            <li>✅ LGPD compliance nativo</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="st-card reveal" style="--d:.2s">
+        <div class="st-visual">
+          <div class="st-counter-demo">
+            <div class="st-counter-ring">
+              <span class="st-counter-num" data-counter="247">0</span>
+              <span class="st-counter-label mono">CORREÇÕES</span>
+            </div>
+            <div class="st-counter-bar">
+              <div class="st-counter-fill" style="width:74%"></div>
+            </div>
+            <div class="st-counter-meta mono">↑ 12% nesta semana</div>
+          </div>
+        </div>
+        <div class="st-body">
+          <span class="st-icon">📈</span>
+          <h3>Fica Melhor Todo Dia</h3>
+          <p>Quanto mais você corrige, mais preciso o classificador fica <strong>para o seu acervo</strong>. Música brasileira, eletrônica underground, raridades — o modelo se adapta ao seu estilo.</p>
+          <div class="st-metrics">
+            <div class="st-metric">
+              <span class="st-metric-num mono">4</span>
+              <span class="st-metric-cap">modelos combinados</span>
+            </div>
+            <div class="st-metric">
+              <span class="st-metric-num mono">1280</span>
+              <span class="st-metric-cap">dimensões por embedding</span>
+            </div>
+            <div class="st-metric">
+              <span class="st-metric-num mono">0.954</span>
+              <span class="st-metric-cap">ROC-AUC do ensemble</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="st-cta reveal" style="--d:.3s">
+      <p class="mono">🧠 O contador na StatusBar mostra quantas músicas já contribuíram para o auto-treinamento</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PRICING ============ -->
 <section class="section pricing" id="planos">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">05 — Planos</span>
+      <span class="eyebrow">06 — Planos</span>
       <h2 class="h2">Invista no seu <span class="grad">tempo de criação</span></h2>
       <p class="section-sub">14 dias grátis no Pro. Sem cartão de crédito.</p>
 
@@ -604,12 +716,13 @@
 <section class="section faq" id="faq">
   <div class="container container-narrow">
     <div class="section-head reveal">
-      <span class="eyebrow">06 — Perguntas Frequentes</span>
+      <span class="eyebrow">07 — Perguntas Frequentes</span>
       <h2 class="h2">Respostas <span class="grad">diretas</span></h2>
     </div>
 
     <div class="faq-list">
       <details class="faq-item reveal"><summary><span>O KimiSound roda no meu computador?</span><span class="plus"></span></summary><div class="faq-a">O KimiSound está disponível nativamente para Windows 10/11 (64-bit). Versões para macOS e Linux estão em breve. O app funciona 100% offline após a instalação.</div></details>
+      <details class="faq-item reveal"><summary><span>O que é Auto-Treinamento de Gênero?</span><span class="plus"></span></summary><div class="faq-a">Auto-Treinamento (self-training) é a capacidade do KimiSound de aprender com as correções que você faz. Ao editar o gênero de uma faixa manualmente, a IA captura o fingerprint da música (embedding 1280-dim) e adiciona a um índice local FAISS. Da próxima vez que encontrar uma faixa similar, o classificador já sabe o gênero correto — tudo offline, sem enviar dados para servidor.</div></details>
       <details class="faq-item reveal"><summary><span>Preciso de cartão de crédito para o trial?</span><span class="plus"></span></summary><div class="faq-a">Não. Os 14 dias de trial Pro são completamente gratuitos, sem necessidade de cartão. Após o trial, você continua no plano Free automaticamente.</div></details>
       <details class="faq-item reveal"><summary><span>O que acontece quando o trial acaba?</span><span class="plus"></span></summary><div class="faq-a">Você continua automaticamente no plano Free com suas faixas intactas. Nenhuma cobrança surpresa. Seus dados nunca são perdidos.</div></details>
       <details class="faq-item reveal"><summary><span>O BPM Sync funciona bem no Windows?</span><span class="plus"></span></summary><div class="faq-a">Sim. O KimiSound usa um modo seguro no Windows: mantém beat alignment e o ponto de entrada da faixa B alinhado ao beat grid sem depender de time-stretch instável em tempo real. Resultado: a transição continua musical sem sumir com o áudio.</div></details>
