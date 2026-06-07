@@ -127,4 +127,71 @@
       });
     });
   }
+
+  // ---- platform check: bloqueio de download em dispositivos nao-Windows ----
+  (function() {
+    var ua = navigator.userAgent;
+    var platform = navigator.platform || '';
+    var isWin = /Win(dows|32|64)/.test(platform) || /Windows|Win64|WOW64/.test(ua);
+    var isMobile = /Mobi|Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+    var isNonWindows = !isWin || isMobile;
+
+    if (isNonWindows) {
+      document.body.classList.add('not-windows');
+
+      document.querySelectorAll('.download-link').forEach(function(link) {
+        link.classList.add('dl-blocked');
+        link.href = '#';
+        link.target = '';
+        link.rel = '';
+        link.innerHTML = '<span class="dl-blocked-icon">💻</span> Apenas Windows';
+        link.title = 'KimiSound esta disponivel apenas para Windows 10/11';
+
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          exibirAvisoPlataforma();
+        });
+      });
+
+      var banner = document.createElement('div');
+      banner.className = 'platform-banner';
+      banner.innerHTML =
+        '<span class="platform-banner-icon">💻</span>' +
+        '<span class="platform-banner-text">KimiSound e <strong>exclusivo para Windows 10/11</strong>. ' +
+        'Acesse pelo seu computador para baixar!</span>' +
+        '<button class="platform-banner-close" aria-label="Fechar">&times;</button>';
+      document.body.prepend(banner);
+
+      banner.querySelector('.platform-banner-close').addEventListener('click', function() {
+        banner.remove();
+      });
+    }
+
+    function exibirAvisoPlataforma() {
+      var old = document.querySelector('.platform-toast');
+      if (old) old.remove();
+
+      var toast = document.createElement('div');
+      toast.className = 'platform-toast';
+      toast.innerHTML =
+        '<div class="platform-toast-content">' +
+          '<span class="platform-toast-icon">💻</span>' +
+          '<div>' +
+            '<strong>Disponivel apenas para Windows</strong>' +
+            '<p>KimiSound e um software profissional para Windows 10/11. ' +
+            'Baixe diretamente pelo seu computador e aproveite todos os recursos!</p>' +
+          '</div>' +
+          '<button class="platform-toast-close">&times;</button>' +
+        '</div>';
+      document.body.appendChild(toast);
+
+      toast.querySelector('.platform-toast-close').addEventListener('click', function() {
+        toast.remove();
+      });
+
+      setTimeout(function() {
+        if (toast.parentNode) toast.remove();
+      }, 8000);
+    }
+  })();
 })();
