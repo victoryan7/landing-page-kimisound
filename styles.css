@@ -1877,3 +1877,168 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
     text-transform: uppercase;
     opacity: 0.8;
 }
+/* ===== NOVAS SEÇÕES (remodelação enxuta) ===== */
+
+/* ── COMO FUNCIONA — 3 PASSOS ── */
+.steps{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:48px}
+.step{display:grid;grid-template-columns:auto 1fr 1fr;gap:32px;align-items:center;position:relative}
+.step-alt{direction:rtl}
+.step-alt > .step-text{direction:ltr}
+.step-alt > .step-media{direction:ltr}
+.step-rail{width:48px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.step-num{
+  display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;
+  border-radius:50%;
+  background:var(--grad);
+  font-size:18px;font-weight:700;
+  color:#000;
+  flex-shrink:0;
+  position:relative;z-index:2;
+}
+.step-rail::after{
+  content:'';display:block;
+  width:2px;flex:1;
+  background:linear-gradient(180deg,var(--cyan),transparent);
+  opacity:.3;
+}
+.step:last-child .step-rail::after{display:none}
+.step-media{
+  border-radius:var(--r-xl);
+  overflow:hidden;
+  border:1px solid var(--border-soft);
+  background:var(--surface);
+  box-shadow:var(--glow-cyan-soft);
+}
+.step-media img{width:100%;height:auto;display:block}
+.step-text{padding:8px 0}
+.step-kicker{
+  font-size:11px;letter-spacing:.18em;color:var(--cyan);
+  margin-bottom:8px;display:inline-block;font-weight:600;
+}
+.step-text h3{
+  font-family:'Poppins',sans-serif;
+  font-weight:700;
+  font-size:clamp(20px,2.2vw,28px);
+  margin:0 0 12px;
+  letter-spacing:-.02em;
+}
+.step-text p{color:var(--muted);margin:0;font-size:15px;line-height:1.7;max-width:420px}
+@media(max-width:780px){
+  .step{grid-template-columns:1fr;gap:16px;direction:ltr!important;text-align:center}
+  .step-rail{width:100%;flex-direction:row;justify-content:center;margin-bottom:4px}
+  .step-rail::after{display:none}
+  .step-media{order:-1}
+  .step-text p{margin:0 auto}
+}
+
+/* ── TRILHAS ── */
+.trilhas-card{
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+  background:linear-gradient(135deg,rgba(123,97,255,.06) 0%,rgba(0,194,255,.04) 100%);
+  border:1px solid rgba(123,97,255,.25);
+  border-radius:var(--r-2xl);
+  padding:48px 56px;
+  position:relative;overflow:hidden;
+}
+.trilhas-glow{
+  position:absolute;top:-40%;right:-20%;width:60%;height:120%;
+  background:radial-gradient(ellipse,rgba(123,97,255,.12),transparent 70%);
+  pointer-events:none;
+}
+.trilhas-text{position:relative;z-index:2}
+.trilhas-card .h2{font-size:clamp(26px,3vw,40px)}
+.trilhas-lead{font-size:17px;line-height:1.6;color:var(--text);margin:0 0 16px}
+.trilhas-lead em{color:var(--cyan);font-style:normal}
+.trilhas-body{font-size:15px;line-height:1.7;color:var(--muted);margin:0 0 24px}
+.trilhas-points{list-style:none;padding:0;margin:0 0 32px}
+.trilhas-points li{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:14.5px;color:var(--text)}
+.trilhas-points .ck{color:var(--green);font-weight:700}
+.trilhas-visual{
+  position:relative;z-index:2;
+  background:rgba(15,17,23,.6);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  padding:24px;
+  backdrop-filter:blur(12px);
+}
+.trk-rec{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:12px;color:var(--red);letter-spacing:.08em}
+.trk-dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse-dot 1.2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.3}}
+.trk-list{list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:6px}
+.trk-item{
+  display:grid;grid-template-columns:auto 1fr auto;gap:12px;
+  padding:8px 12px;
+  border-radius:var(--r-md);
+  background:rgba(255,255,255,.03);
+  align-items:center;
+  font-size:14px;
+}
+.trk-item.live{
+  background:rgba(0,194,255,.08);
+  border:1px solid rgba(0,194,255,.25);
+}
+.trk-i{color:var(--muted);font-size:12px;width:20px}
+.trk-name{color:var(--text);font-weight:500}
+.trk-bpm{color:var(--muted);font-size:12px}
+.trk-foot{font-size:11px;color:var(--muted);text-align:right;letter-spacing:.06em}
+@media(max-width:800px){
+  .trilhas-card{grid-template-columns:1fr;padding:32px 24px;gap:32px}
+  .trilhas-visual{order:-1}
+}
+
+/* ── RECURSOS (cap-grid) ── */
+.cap-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.cap{
+  background:rgba(24,28,37,.45);
+  border:1px solid var(--border-soft);
+  border-radius:var(--r-lg);
+  padding:20px 18px 24px;
+  transition:transform .3s,border-color .3s;
+}
+.cap:hover{transform:translateY(-4px);border-color:rgba(0,194,255,.25)}
+.cap-ic{font-size:24px;display:block;margin-bottom:10px}
+.cap h3{
+  font-family:'Poppins',sans-serif;
+  font-weight:700;
+  font-size:16px;
+  margin:0 0 6px;
+  letter-spacing:-.015em;
+}
+.cap p{color:var(--muted);margin:0;font-size:13.5px;line-height:1.5}
+.cap-new{border-color:rgba(123,97,255,.3)}
+.cap-badge{
+  font-size:9px;letter-spacing:.12em;color:#000;
+  background:var(--grad);
+  padding:2px 6px;border-radius:4px;
+  vertical-align:middle;margin-left:4px;
+}
+@media(max-width:900px){.cap-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.cap-grid{grid-template-columns:1fr}}
+
+/* ── DEPOIMENTOS ── */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.quote{
+  background:rgba(24,28,37,.4);
+  border:1px solid var(--border-soft);
+  border-radius:var(--r-lg);
+  padding:28px 24px;
+  display:flex;flex-direction:column;gap:14px;
+  transition:transform .3s,border-color .3s;
+}
+.quote:hover{transform:translateY(-4px);border-color:rgba(0,194,255,.2)}
+.quote blockquote{
+  margin:0;color:var(--text);
+  font-size:15px;line-height:1.65;
+  font-style:italic;
+  flex:1;
+}
+.quote figcaption{display:flex;align-items:center;gap:12px;padding-top:12px;border-top:1px solid var(--border-soft)}
+.q-name{font-weight:600;font-size:15px}
+.q-role{font-size:12px;color:var(--muted)}
+.stars{color:var(--yellow);font-size:15px;letter-spacing:.08em}
+@media(max-width:780px){.quotes{grid-template-columns:1fr;gap:16px}}
