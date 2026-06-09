@@ -1,4 +1,4 @@
-/* ========== KIMISOUND LANDING ========== */
+﻿/* ========== KIMISOUND LANDING ========== */
 
 :root{
   --bg:#0F1117;
@@ -528,7 +528,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
   line-height:1.3;
 }
 
-/* ===== SOLUÇÃO ===== */
+/* ===== SOLUÃ‡ÃƒO ===== */
 .feature-grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
@@ -937,7 +937,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
 .plan-pro{border-color:rgba(0,194,255,.3)}
 .plan-pro:hover{border-color:rgba(0,194,255,.5);box-shadow:var(--glow-cyan-soft)}
 
-/* Pro featured — cyan glow */
+/* Pro featured â€” cyan glow */
 .plan-featured.plan-pro{
   border-color:rgba(0,194,255,.5);
   background: linear-gradient(180deg, rgba(0,194,255,.07), rgba(24,28,37,.7));
@@ -956,7 +956,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
   box-shadow: 0 6px 20px rgba(0,194,255,.45);
 }
 
-/* Studio — purple accent (no longer featured) */
+/* Studio â€” purple accent (no longer featured) */
 .plan-studio{
   border-color:rgba(123,97,255,.3);
 }
@@ -1877,62 +1877,8 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
     text-transform: uppercase;
     opacity: 0.8;
 }
-/* ===== NOVAS SEÇÕES (remodelação enxuta) ===== */
 
-/* ── COMO FUNCIONA — 3 PASSOS ── */
-.steps{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:48px}
-.step{display:grid;grid-template-columns:auto 1fr 1fr;gap:32px;align-items:center;position:relative}
-.step-alt{direction:rtl}
-.step-alt > .step-text{direction:ltr}
-.step-alt > .step-media{direction:ltr}
-.step-rail{width:48px;display:flex;flex-direction:column;align-items:center;gap:8px}
-.step-num{
-  display:flex;align-items:center;justify-content:center;
-  width:44px;height:44px;
-  border-radius:50%;
-  background:var(--grad);
-  font-size:18px;font-weight:700;
-  color:#000;
-  flex-shrink:0;
-  position:relative;z-index:2;
-}
-.step-rail::after{
-  content:'';display:block;
-  width:2px;flex:1;
-  background:linear-gradient(180deg,var(--cyan),transparent);
-  opacity:.3;
-}
-.step:last-child .step-rail::after{display:none}
-.step-media{
-  border-radius:var(--r-xl);
-  overflow:hidden;
-  border:1px solid var(--border-soft);
-  background:var(--surface);
-  box-shadow:var(--glow-cyan-soft);
-}
-.step-media img{width:100%;height:auto;display:block}
-.step-text{padding:8px 0}
-.step-kicker{
-  font-size:11px;letter-spacing:.18em;color:var(--cyan);
-  margin-bottom:8px;display:inline-block;font-weight:600;
-}
-.step-text h3{
-  font-family:'Poppins',sans-serif;
-  font-weight:700;
-  font-size:clamp(20px,2.2vw,28px);
-  margin:0 0 12px;
-  letter-spacing:-.02em;
-}
-.step-text p{color:var(--muted);margin:0;font-size:15px;line-height:1.7;max-width:420px}
-@media(max-width:780px){
-  .step{grid-template-columns:1fr;gap:16px;direction:ltr!important;text-align:center}
-  .step-rail{width:100%;flex-direction:row;justify-content:center;margin-bottom:4px}
-  .step-rail::after{display:none}
-  .step-media{order:-1}
-  .step-text p{margin:0 auto}
-}
-
-/* ── TRILHAS ── */
+/* ===== TRILHAS SECTION ===== */
 .trilhas-card{
   display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
   background:linear-gradient(135deg,rgba(123,97,255,.06) 0%,rgba(0,194,255,.04) 100%);
@@ -1982,229 +1928,5 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
 .trk-name{color:var(--text);font-weight:500}
 .trk-bpm{color:var(--muted);font-size:12px}
 .trk-foot{font-size:11px;color:var(--muted);text-align:right;letter-spacing:.06em}
-@media(max-width:800px){
-  .trilhas-card{grid-template-columns:1fr;padding:32px 24px;gap:32px}
-  .trilhas-visual{order:-1}
-}
-
-/* ── RECURSOS (cap-grid) ── */
-.cap-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-}
-.cap{
-  background:rgba(24,28,37,.45);
-  border:1px solid var(--border-soft);
-  border-radius:var(--r-lg);
-  padding:20px 18px 24px;
-  transition:transform .3s,border-color .3s;
-}
-.cap:hover{transform:translateY(-4px);border-color:rgba(0,194,255,.25)}
-.cap-ic{font-size:24px;display:block;margin-bottom:10px}
-.cap h3{
-  font-family:'Poppins',sans-serif;
-  font-weight:700;
-  font-size:16px;
-  margin:0 0 6px;
-  letter-spacing:-.015em;
-}
-.cap p{color:var(--muted);margin:0;font-size:13.5px;line-height:1.5}
-.cap-new{border-color:rgba(123,97,255,.3)}
-.cap-badge{
-  font-size:9px;letter-spacing:.12em;color:#000;
-  background:var(--grad);
-  padding:2px 6px;border-radius:4px;
-  vertical-align:middle;margin-left:4px;
-}
-@media(max-width:900px){.cap-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:500px){.cap-grid{grid-template-columns:1fr}}
-
-/* ── DEPOIMENTOS ── */
-.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.quote{
-  background:rgba(24,28,37,.4);
-  border:1px solid var(--border-soft);
-  border-radius:var(--r-lg);
-  padding:28px 24px;
-  display:flex;flex-direction:column;gap:14px;
-  transition:transform .3s,border-color .3s;
-}
-.quote:hover{transform:translateY(-4px);border-color:rgba(0,194,255,.2)}
-.quote blockquote{
-  margin:0;color:var(--text);
-  font-size:15px;line-height:1.65;
-  font-style:italic;
-  flex:1;
-}
-.quote figcaption{display:flex;align-items:center;gap:12px;padding-top:12px;border-top:1px solid var(--border-soft)}
-.q-name{font-weight:600;font-size:15px}
-.q-role{font-size:12px;color:var(--muted)}
-.stars{color:var(--yellow);font-size:15px;letter-spacing:.08em}
-@media(max-width:780px){.quotes{grid-template-columns:1fr;gap:16px}}
 
 
-/* ========== PLATFORM BLOCK (mobile/nao-Windows) ========== */
-
-/* Banner fixo no topo */
-.platform-banner {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border-bottom: 1px solid var(--border);
-  color: var(--text);
-  font-size: 14px;
-  animation: slideDown 0.4s ease-out;
-}
-
-@keyframes slideDown {
-  from { transform: translateY(-100%); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
-}
-
-.platform-banner-icon {
-  font-size: 24px;
-  flex-shrink: 0;
-}
-
-.platform-banner-text {
-  flex: 1;
-  line-height: 1.4;
-}
-
-.platform-banner-text strong {
-  color: var(--cyan);
-}
-
-.platform-banner-close {
-  background: none;
-  border: none;
-  color: var(--muted);
-  font-size: 22px;
-  cursor: pointer;
-  padding: 4px 8px;
-  line-height: 1;
-  border-radius: 4px;
-  transition: color 0.2s, background 0.2s;
-}
-
-.platform-banner-close:hover {
-  color: var(--text);
-  background: rgba(255,255,255,0.08);
-}
-
-/* Botao de download bloqueado */
-.dl-blocked {
-  cursor: default !important;
-  pointer-events: auto !important;
-  background: var(--surface-2) !important;
-  border-color: var(--border) !important;
-  color: var(--muted) !important;
-  opacity: 0.85;
-  transition: opacity 0.2s;
-}
-
-.dl-blocked:hover {
-  opacity: 1;
-  border-color: var(--orange) !important;
-  color: var(--orange) !important;
-  box-shadow: 0 0 20px rgba(232,67,10,0.15);
-}
-
-.dl-blocked-icon {
-  margin-right: 6px;
-  font-size: 1.1em;
-}
-
-/* Toast de aviso */
-.platform-toast {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 99999;
-  max-width: 400px;
-  animation: toastIn 0.4s ease-out;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-  border-radius: var(--r-lg);
-  border: 1px solid var(--border);
-  background: var(--surface);
-}
-
-@keyframes toastIn {
-  from { transform: translateY(20px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
-}
-
-.platform-toast-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px 20px;
-}
-
-.platform-toast-icon {
-  font-size: 28px;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.platform-toast-content div {
-  flex: 1;
-}
-
-.platform-toast-content strong {
-  display: block;
-  color: var(--orange);
-  font-size: 15px;
-  margin-bottom: 4px;
-}
-
-.platform-toast-content p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.platform-toast-close {
-  background: none;
-  border: none;
-  color: var(--muted);
-  font-size: 20px;
-  cursor: pointer;
-  padding: 0 4px;
-  line-height: 1;
-  transition: color 0.2s;
-}
-
-.platform-toast-close:hover {
-  color: var(--text);
-}
-
-/* Ajuste para o banner ocupar espaco no body */
-body.not-windows {
-  padding-top: 56px;
-}
-
-/* Responsivo: toast ocupa toda a largura em mobile */
-@media (max-width: 600px) {
-  .platform-toast {
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
-    max-width: none;
-  }
-  .platform-banner {
-    padding: 10px 16px;
-    font-size: 13px;
-    flex-wrap: wrap;
-  }
-  body.not-windows {
-    padding-top: 72px;
-  }
-}
