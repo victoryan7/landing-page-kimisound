@@ -1,0 +1,12 @@
+# robots.txt - KimiSound
+# https://www.kimisound.com.br
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.kimisound.com.br/sitemap.xml
+
+# Bloquear páginas de callback do Stripe (não indexar)
+Disallow: /success.html
+Disallow: /cancel.html
