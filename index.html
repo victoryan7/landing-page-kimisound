@@ -22,8 +22,11 @@
 <link rel="icon" type="image/png" href="assets/mascot-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Poppins:wght@400;600;700;800&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" /></noscript>
 <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#0F1117" />
 </head>
 <body>
 
@@ -39,7 +42,7 @@
 <!-- sticky nav -->
 <header class="nav" id="nav">
   <a class="brand" href="#top">
-    <img src="assets/mascot-icon.png" alt="" class="brand-mark" />
+    <img loading="lazy" src="assets/mascot-icon.webp" alt="" class="brand-mark" />
     <span class="brand-word"><span class="kimi">Kimi</span><span class="sound">Sound</span></span>
   </a>
   <nav class="nav-links" aria-label="Primário">
@@ -139,7 +142,7 @@
             <span class="tl-dot r"></span><span class="tl-dot y"></span><span class="tl-dot g"></span>
             <span class="tl-title">KimiSound — Todas as Faixas · 722 faixas · 62 horas 32 min</span>
           </div>
-          <img src="uploads/01_main_window_all_tracks_dark.png" alt="Playlist Todas as Faixas com coluna Flow Score por faixa e dados reais" />
+          <img fetchpriority="high" src="uploads/01_main_window_all_tracks_dark.webp" alt="Playlist Todas as Faixas com coluna Flow Score por faixa e dados reais" />
           <div class="app-scan"></div>
         </div>
       </div>
@@ -454,7 +457,7 @@
       <div class="dd-image">
         <div class="app-frame app-frame-tilt">
           <div class="app-titlebar"><span class="tl-dot r"></span><span class="tl-dot y"></span><span class="tl-dot g"></span><span class="tl-title">Playlist · Warm Up Jazz · Flow 76%</span></div>
-          <img src="assets/app-playlist-flow.png" alt="Playlist real com Flow Score por faixa e registros" />
+          <img loading="lazy" src="assets/app-playlist-flow.webp" alt="Playlist real com Flow Score por faixa e registros" />
           <div class="dd-glow"></div>
         </div>
       </div>
@@ -475,7 +478,7 @@
       <div class="dd-image">
         <div class="app-frame app-frame-tilt flip">
           <div class="app-titlebar"><span class="tl-dot r"></span><span class="tl-dot y"></span><span class="tl-dot g"></span><span class="tl-title">DJ Flow Wizard · Etapa 3 de 3</span></div>
-          <img src="uploads/21_dj_flow_wizard_step3_dark.png" alt="Wizard preview e confirmação" />
+          <img loading="lazy" src="uploads/21_dj_flow_wizard_step3_dark.webp" alt="Wizard preview e confirmação" />
           <div class="dd-glow purple"></div>
         </div>
       </div>
@@ -495,7 +498,7 @@
       <div class="dd-image">
         <div class="app-frame app-frame-tilt">
           <div class="app-titlebar"><span class="tl-dot r"></span><span class="tl-dot y"></span><span class="tl-dot g"></span><span class="tl-title">Meu Estilo Musical</span></div>
-          <img src="uploads/46_settings_meuestilo_dashboard_dark.png" alt="Dashboard Meu Estilo Musical com registros reais" />
+          <img loading="lazy" src="uploads/46_settings_meuestilo_dashboard_dark.webp" alt="Dashboard Meu Estilo Musical com registros reais" />
           <div class="dd-glow"></div>
         </div>
       </div>
@@ -792,7 +795,7 @@
   <div class="container">
     <div class="cta-card reveal">
       <div class="cta-mascot">
-        <img src="assets/mascot-dj.png" alt="KimiSound mascote DJ" />
+        <img loading="lazy" src="assets/mascot-dj.webp" alt="KimiSound mascote DJ" />
       </div>
       <div class="cta-content">
         <span class="eyebrow">PRONTO PARA COMEÇAR?</span>
@@ -821,7 +824,7 @@
   <div class="container footer-grid">
     <div class="foot-brand">
       <a class="brand" href="#top">
-        <img src="assets/mascot-icon.png" alt="" class="brand-mark" />
+        <img loading="lazy" src="assets/mascot-icon.webp" alt="" class="brand-mark" />
         <span class="brand-word"><span class="kimi">Kimi</span><span class="sound">Sound</span></span>
       </a>
       <p class="foot-tag">Seus sets. Com o poder da IA.</p>

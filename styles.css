@@ -104,7 +104,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
   position:absolute;
   width:600px;height:600px;
   border-radius:50%;
-  filter:blur(120px);
+  filter:blur(60px);
   opacity:.45;
   will-change:transform;
 }
@@ -144,8 +144,8 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
 }
 .nav.scrolled{
   background:rgba(15,17,23,.72);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
   padding:12px 32px;
   border-bottom-color:var(--border-soft);
 }

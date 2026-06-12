@@ -118,7 +118,7 @@
         navLinks.style.background = 'rgba(15,17,23,.96)';
         navLinks.style.border = '1px solid var(--border)';
         navLinks.style.borderRadius = '12px';
-        navLinks.style.backdropFilter = 'blur(20px)';
+        navLinks.style.backdropFilter = 'blur(12px)';
       }
     });
     navLinks?.querySelectorAll('a').forEach(a => {
