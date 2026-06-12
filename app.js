@@ -143,7 +143,7 @@
       var banner = document.createElement('div');
       banner.className = 'platform-banner';
       banner.innerHTML =
-        '<span class="platform-banner-icon">ð»</span>' +
+        '<span class="platform-banner-icon">&#x1F4BB;</span>' +
         '<span class="platform-banner-text">KimiSound roda em <strong>Windows 10/11</strong>. ' +
         'O download e um instalador .exe para seu computador.</span>' +
         '<button class="platform-banner-close" aria-label="Fechar">&times;</button>';
