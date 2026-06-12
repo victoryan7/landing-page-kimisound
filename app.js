@@ -128,7 +128,7 @@
     });
   }
 
-  // ---- platform check: informational banner on non-Windows (download stays functional) ----
+  // ---- platform check: block download on non-Windows, show informational toast ----
   (function() {
     var ua = navigator.userAgent;
     var platform = navigator.platform || '';
@@ -139,19 +139,36 @@
     if (isNonWindows) {
       document.body.classList.add('not-windows');
 
-      // Show subtle informational banner (does NOT block downloads)
+      // Intercept download clicks - show toast instead of downloading
+      document.querySelectorAll('.download-link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          showPlatformToast();
+        });
+      });
+    }
+
+    function showPlatformToast() {
+      var old = document.querySelector('.platform-banner');
+      if (old) old.remove();
+
       var banner = document.createElement('div');
       banner.className = 'platform-banner';
       banner.innerHTML =
         '<span class="platform-banner-icon">&#x1F4BB;</span>' +
-        '<span class="platform-banner-text">KimiSound roda em <strong>Windows 10/11</strong>. ' +
-        'O download e um instalador .exe para seu computador.</span>' +
+        '<span class="platform-banner-text">KimiSound esta disponivel apenas para <strong>Windows 10/11</strong>. ' +
+        'Acesse pelo seu computador para baixar!</span>' +
         '<button class="platform-banner-close" aria-label="Fechar">&times;</button>';
       document.body.prepend(banner);
 
       banner.querySelector('.platform-banner-close').addEventListener('click', function() {
         banner.remove();
       });
+
+      // Auto-dismiss after 8 seconds
+      setTimeout(function() {
+        if (banner.parentNode) banner.remove();
+      }, 8000);
     }
   })();
 })();
