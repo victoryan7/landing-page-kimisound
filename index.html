@@ -278,7 +278,7 @@
             <span class="g g-8">Downtempo</span>
             <span class="g g-9 active">High-Tech</span>
           </div>
-          <div class="auc-pill mono">ROC-AUC <strong>0.954</strong></div>
+          <div class="auc-pill mono">Precisão <strong>0.954</strong></div>
         </div>
         <div class="feat-body">
           <span class="feat-tag">ANÁLISE POR IA</span>
@@ -571,17 +571,17 @@
               <span class="st-demo-arrow check">✓</span>
             </div>
             <div class="st-demo-feedback">
-              <span class="mono st-badge">🧠 embedding 1280-d registrado</span>
+              <span class="mono st-badge">🧠 aprendizado salvo</span>
             </div>
           </div>
         </div>
         <div class="st-body">
           <span class="st-icon">✏️</span>
           <h3>Corrija e Ensine</h3>
-          <p>Clique no gênero de qualquer faixa na tabela, selecione o valor correto — e o <strong>Self-Training Engine</strong> captura o embedding 1280-dim da faixa, adiciona ao índice FAISS incremental e o classificador passa a reconhecer padrões similares automaticamente.</p>
+          <p>Clique no gênero de qualquer faixa na tabela e selecione o valor correto — o KimiSound cria uma impressão digital sonora exclusiva da faixa e ensina o classificador. A partir daí, ele passa a reconhecer músicas parecidas automaticamente.</p>
           <div class="st-tech mono">
-            <span>🔍 deduplication por track_id</span>
-            <span>💾 save atômico com os.replace</span>
+            <span>🔍 sem duplicar faixas</span>
+            <span>💾 salvamento seguro</span>
           </div>
         </div>
       </article>
@@ -606,7 +606,7 @@
         <div class="st-body">
           <span class="st-icon">🔐</span>
           <h3>100% Offline e Privado</h3>
-          <p>Diferente de serviços em nuvem que vendem seu perfil musical, o KimiSound processa <strong>tudo localmente</strong>. O índice FAISS, os embeddings e as correções nunca saem do seu computador.</p>
+          <p>Diferente de serviços em nuvem que vendem seu perfil musical, o KimiSound processa <strong>tudo localmente</strong>. Toda a inteligência e o seu aprendizado nunca saem do seu computador.</p>
           <ul class="st-list">
             <li>✅ Nenhum dado enviado para servidor</li>
             <li>✅ Sem conta obrigatória</li>
@@ -638,12 +638,12 @@
               <span class="st-metric-cap">modelos combinados</span>
             </div>
             <div class="st-metric">
-              <span class="st-metric-num mono">1280</span>
-              <span class="st-metric-cap">dimensões por embedding</span>
+              <span class="st-metric-num mono">180+</span>
+              <span class="st-metric-cap">gêneros reconhecidos</span>
             </div>
             <div class="st-metric">
               <span class="st-metric-num mono">0.954</span>
-              <span class="st-metric-cap">ROC-AUC do ensemble</span>
+              <span class="st-metric-cap">precisão do classificador</span>
             </div>
           </div>
         </div>
@@ -775,7 +775,7 @@
       <details class="faq-item reveal"><summary><span>O KimiSound roda no meu computador?</span><span class="plus"></span></summary><div class="faq-a">O KimiSound está disponível nativamente para Windows 10/11 (64-bit). Versões para macOS e Linux estão em breve. O app funciona 100% offline após a instalação.</div></details>
 
       <details class="faq-item reveal"><summary><span>Preciso aceitar Termos de Uso para instalar?</span><span class="plus"></span></summary><div class="faq-a">Sim. A partir da v2.0.5 o instalador do KimiSound exibe uma tela com os Termos de Uso. Basta ler e aceitar para prosseguir com a instalacao -- uma camada extra de transparencia e conformidade para voce.</div></details>
-      <details class="faq-item reveal"><summary><span>O que é Auto-Treinamento de Gênero?</span><span class="plus"></span></summary><div class="faq-a">Auto-Treinamento (self-training) é a capacidade do KimiSound de aprender com as correções que você faz. Ao editar o gênero de uma faixa manualmente, a IA captura o fingerprint da música (embedding 1280-dim) e adiciona a um índice local FAISS. Da próxima vez que encontrar uma faixa similar, o classificador já sabe o gênero correto — tudo offline, sem enviar dados para servidor.</div></details>
+      <details class="faq-item reveal"><summary><span>O que é Auto-Treinamento de Gênero?</span><span class="plus"></span></summary><div class="faq-a">Auto-Treinamento (self-training) é a capacidade do KimiSound de aprender com as correções que você faz. Ao editar o gênero de uma faixa manualmente, a IA guarda uma impressão digital sonora da música no seu próprio computador. Da próxima vez que encontrar uma faixa similar, o classificador já sabe o gênero correto — tudo offline, sem enviar dados para servidor.</div></details>
             <details class="faq-item reveal"><summary><span>Como funcionam as Trilhas?</span><span class="plus"></span></summary><div class="faq-a">Você liga a gravação e segue tocando normalmente. O KimiSound registra cada faixa reproduzida, na ordem exata, e salva tudo como uma Trilha. Depois é só revisitar, renomear ou reaproveitar aquela sessão que deu certo — nada se perde.</div></details>
       <details class="faq-item reveal"><summary><span>Preciso de cartão de crédito para o trial?</span><span class="plus"></span></summary><div class="faq-a">Não. Os 14 dias de trial Pro são completamente gratuitos, sem necessidade de cartão. Após o trial, você continua no plano Free automaticamente.</div></details>
       <details class="faq-item reveal"><summary><span>O que acontece quando o trial acaba?</span><span class="plus"></span></summary><div class="faq-a">Você continua automaticamente no plano Free com suas faixas intactas. Nenhuma cobrança surpresa. Seus dados nunca são perdidos.</div></details>
