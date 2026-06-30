@@ -1,4 +1,4 @@
-﻿/* ========== KIMISOUND LANDING ========== */
+/* ========== KIMISOUND LANDING ========== */
 
 :root{
   --bg:#0F1117;
@@ -1928,6 +1928,34 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
 .trk-name{color:var(--text);font-weight:500}
 .trk-bpm{color:var(--muted);font-size:12px}
 .trk-foot{font-size:11px;color:var(--muted);text-align:right;letter-spacing:.06em}
+
+/* -- Trilhas Responsive -- */
+@media (max-width: 880px){
+  .trilhas-card{
+    grid-template-columns:1fr;
+    gap:32px;
+    padding:36px 28px;
+  }
+  .trilhas-visual{
+    order:2;
+  }
+}
+@media (max-width: 560px){
+  .trilhas-card{
+    padding:28px 20px;
+    gap:24px;
+  }
+  .trilhas-card .h2{font-size:24px}
+  .trilhas-lead{font-size:15px}
+  .trilhas-body{font-size:14px}
+  .trilhas-points li{font-size:13.5px;gap:8px}
+  .trilhas-points{margin:0 0 24px}
+  .trilhas-visual{padding:16px}
+  .trk-item{padding:6px 10px;font-size:13px}
+  .trk-name{font-size:13px}
+  .trk-foot{font-size:10px}
+}
+
 
 
 
