@@ -1,14 +1,21 @@
 ﻿<!doctype html>
 <html lang="pt-BR">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8N0QM0S1VJ"></script>
+<!-- Google Consent Mode v2 (LGPD compliant) -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': 500
+  });
   gtag('js', new Date());
-  gtag('config', 'G-8N0QM0S1VJ');
+  gtag('config', 'G-8N0QM0S1VJ', { 'anonymize_ip': true });
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8N0QM0S1VJ"></script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>KimiSound — Software Profissional de Gestão de Biblioteca e Mixagem para DJs</title>
@@ -840,6 +847,7 @@
       <a href="#">Sobre</a>
       <a href="#">Contato</a>
       <a href="#">Política de Privacidade</a>
+      <a href="javascript:void(0)" onclick="window.kimiReopenCookies()" class="footer-cookie-link">Gerenciar Cookies</a>
     </nav>
     <nav class="foot-col">
       <h4>Plataformas</h4>
@@ -1061,6 +1069,100 @@
   });
 })();
 </script>
+
+<!-- ============ COOKIE CONSENT BANNER (LGPD) ============ -->
+<div id="cookieConsent" class="cookie-banner cookie-hidden" role="dialog" aria-label="Consentimento de Cookies" aria-modal="false">
+  <div class="cookie-inner">
+    <div class="cookie-icon" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="8" cy="9" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="15" cy="7" r="1" fill="currentColor" stroke="none"/>
+        <circle cx="14" cy="14" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="7" cy="14" r="1" fill="currentColor" stroke="none"/>
+        <circle cx="11" cy="17" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+    </div>
+    <div class="cookie-text">
+      <p>Usamos cookies para analisar o desempenho do site e melhorar sua experiencia. Ao aceitar, voce concorda com o uso de cookies analiticos.</p>
+      <a href="https://github.com/victoryan7/KimiSound/blob/master/docs/POLITICA_PRIVACIDADE.md" target="_blank" rel="noopener" class="cookie-link">Politica de Privacidade</a>
+    </div>
+    <div class="cookie-actions">
+      <button id="cookieAcceptAll" class="btn btn-primary btn-sm cookie-btn-accept">Aceitar</button>
+      <button id="cookieEssential" class="btn btn-ghost btn-sm cookie-btn-reject">Apenas Essenciais</button>
+    </div>
+  </div>
+</div>
+
+<!-- Cookie Consent Logic -->
+<script>
+(function(){
+  'use strict';
+  var STORAGE_KEY = 'kimi_cookie_consent';
+  var banner = document.getElementById('cookieConsent');
+  var btnAccept = document.getElementById('cookieAcceptAll');
+  var btnEssential = document.getElementById('cookieEssential');
+
+  function getConsent() {
+    try { return localStorage.getItem(STORAGE_KEY); } catch(e) { return null; }
+  }
+
+  function setConsent(value) {
+    try { localStorage.setItem(STORAGE_KEY, value); } catch(e) {}
+  }
+
+  function grantAnalytics() {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted'
+      });
+    }
+  }
+
+  function showBanner() {
+    banner.classList.remove('cookie-hidden');
+    banner.setAttribute('aria-hidden', 'false');
+  }
+
+  function hideBanner() {
+    banner.classList.add('cookie-hidden');
+    banner.setAttribute('aria-hidden', 'true');
+  }
+
+  // Check existing consent
+  var existing = getConsent();
+  if (existing === 'all') {
+    grantAnalytics();
+  } else if (!existing) {
+    // Show banner after short delay for better UX
+    setTimeout(showBanner, 1200);
+  }
+
+  // Accept all
+  btnAccept.addEventListener('click', function() {
+    setConsent('all');
+    grantAnalytics();
+    hideBanner();
+  });
+
+  // Essential only
+  btnEssential.addEventListener('click', function() {
+    setConsent('essential');
+    hideBanner();
+  });
+
+  // Expose function to reopen banner (for footer link)
+  window.kimiReopenCookies = function() {
+    hideBanner();
+    setTimeout(function() {
+      // Reset to allow re-choice
+      try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+      showBanner();
+    }, 100);
+  };
+})();
+</script>
+
 
 </body>
 </html>
