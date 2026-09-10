@@ -171,4 +171,15 @@
       }, 8000);
     }
   })();
+
+  // ---- hero video: sound toggle (landing v2) ----
+  var hv = document.getElementById('heroVideo');
+  var sb = document.getElementById('heroSoundBtn');
+  if (hv && sb) {
+    sb.addEventListener('click', function() {
+      hv.muted = !hv.muted;
+      sb.textContent = hv.muted ? '\uD83D\uDD07' : '\uD83D\uDD0A';
+      if (!hv.muted && hv.paused) hv.play().catch(function() {});
+    });
+  }
 })();
