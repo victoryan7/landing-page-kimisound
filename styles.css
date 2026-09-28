@@ -899,7 +899,10 @@ body:has(.platform-banner) .hero {
   pointer-events: none;
 }
 
-.cookie-banner:not(.cookie-hidden) {
+.cookie-banner:not(.cookie-hidden) .cookie-inner {
+  /* Apenas o CONTEÚDO do banner captura cliques. O invólucro é full-width e,
+     com pointer-events auto, engolia cliques de elementos do rodapé atrás dele
+     (ex.: o link de download em "Plataformas") — detectado em 28/09/2026. */
   pointer-events: auto;
 }
 
